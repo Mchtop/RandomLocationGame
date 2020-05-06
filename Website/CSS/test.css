@@ -1,0 +1,11 @@
+html, body {
+    font-family: lato;
+    height: 100%;
+    padding: 0;
+}
+
+#map, #pano {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
