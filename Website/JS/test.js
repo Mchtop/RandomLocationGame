@@ -7,8 +7,8 @@ var marker;
 var markers = [];
 var markerCoordinates = [];
 
-function initialize() {
 
+function initialize() {
   coordinates = {lat: 42.345573, lng: -71.098326};
 
   //initializes simple map view
@@ -85,7 +85,7 @@ function initialize() {
     // disables moving the marker after clicking "guess"
     google.maps.event.clearListeners(map, 'click');
 
-    document.getElementById("result").innerHTML = "You're " + haversine_distance(markers[0], markers[1]) + "km away from the actual location.";
+    document.getElementById("result-text").innerHTML = "You're " + haversine_distance(markers[0], markers[1]) + "km away from the actual location.";
   }
 
   // function to calculate distance between 2 points
@@ -98,4 +98,4 @@ function initialize() {
 
       var d = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
       return d;
-    }
+  }
