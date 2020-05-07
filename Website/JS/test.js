@@ -5,11 +5,13 @@ var markerActualLocation;
 var line;
 var marker;
 var markers = [];
+var bounds;
 var markerCoordinates = [];
 
 
 function initialize() {
   coordinates = {lat: 42.345573, lng: -71.098326};
+  bounds = new google.maps.LatLngBounds();
 
   //initializes simple map view
   map = new google.maps.Map(document.getElementById('map'), {
@@ -84,6 +86,12 @@ function initialize() {
 
     // disables moving the marker after clicking "guess"
     google.maps.event.clearListeners(map, 'click');
+
+    for (var i = 0; i < markers.length; i++) {
+      bounds.extend(markers[i].getPosition());
+    }
+
+    map.fitBounds(bounds);
 
     document.getElementById("result-text").innerHTML = "You're " + haversine_distance(markers[0], markers[1]) + "km away from the actual location.";
   }
