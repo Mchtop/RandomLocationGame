@@ -11,7 +11,9 @@
   <script src="../JS/test.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHZk4ZNggKV1Y8Dn80h3XkYbl6XAOmKw&callback=initialize"></script>
 
-
+  <div class="result-text">
+      <p id="result"></p>
+  </div>
   <div class="map-and-button">
     <div id="map"></div>
     <input type="button" id="guess-button" onclick="guessFunction()" value="GUESS"/>
