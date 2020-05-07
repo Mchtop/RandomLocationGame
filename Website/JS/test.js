@@ -3,6 +3,7 @@ var coordinates;
 var panorama;
 var markerActualLocation;
 var line;
+var marker;
 var markers = [];
 var markerCoordinates = [];
 
@@ -40,7 +41,7 @@ function initialize() {
     //places a marker on click & moves the marker around
     function placeMarker(location) {
       if (!marker || !marker.setPosition) {
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
           position: location,
           map: map,
         });
