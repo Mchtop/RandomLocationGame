@@ -109,5 +109,7 @@ function initialize() {
   }
 
   function expandFunction(){
-    
+    //alle meine Enten
+    var x = 1 + 1;
+    //michi lol
   }
