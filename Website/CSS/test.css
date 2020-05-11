@@ -18,7 +18,7 @@ header{
   height: 30%;
   width: 25%;
   padding: 0;
-  z-index: 999;
+  z-index: 2;
   position: absolute;
   left: 10px;
   bottom: 0;
@@ -51,6 +51,12 @@ header{
   letter-spacing: 2px;
   font-size: 20px;
   color: white;
+}
+
+#expand-button{
+  height: 20px;
+  width: 50px;
+  z-index: 3;
 }
 
 #guess-button:hover {
