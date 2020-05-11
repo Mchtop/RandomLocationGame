@@ -1,0 +1,10 @@
+JS:
++ map expands after clicking on "guess"
++ map can be expanded/minimized to view streetview
++ remove decimals from distance
++ add button for "next game"
++ reset upon click "next game"
+
+
+CSS:
++ style for result at the top
