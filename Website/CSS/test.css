@@ -5,17 +5,6 @@ html, body {
   margin: 0;
 }
 
-.map-and-button{
-  height: 30%;
-  width: 25%;
-  padding: 0;
-  z-index: 2;
-  position: absolute;
-  left: 10px;
-  bottom: 0;
-  margin-bottom: 9vh;
-}
-
 header {
   z-index: 999;
   pointer-events: none;
@@ -54,7 +43,6 @@ th {
   width: 100%;
   height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
   color: black;
   pointer-events: none;
@@ -108,6 +96,17 @@ th {
   z-index: 1;
 }
 
+.map-and-button{
+  height: 30%;
+  width: 25%;
+  padding: 0;
+  z-index: 2;
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  margin-bottom: 9vh;
+}
+
 #map{
   height: 85%;
   width: 100%;
@@ -128,11 +127,6 @@ th {
   color: white;
 }
 
-#expand-button{
-  height: 20px;
-  width: 50px;
-}
-
 #guess-button:hover{
   background-color: green;
   cursor: pointer;
@@ -141,4 +135,10 @@ th {
 #guess-button:focus {
   outline: none;
 }
+
+#expand-button{
+  height: 20px;
+  width: 50px;
+}
+
 
