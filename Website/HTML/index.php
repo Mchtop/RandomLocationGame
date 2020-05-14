@@ -25,10 +25,9 @@
     <div id="result-popup">
       <span id="result-text"></span>
       <span id="result-score">You gained X Points</span>
-      <input type="button" id="next-game-button" onClick="" value="Next Game"/>
+      <input type="button" id="next-button" onClick="nextGameFunction()" value="NEXT" disabled/>
     </div>
   </div>
-
   <script src="../JS/test.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHZk4ZNggKV1Y8Dn80h3XkYbl6XAOmKw&callback=initialize"></script>
   <div class="map-and-button">
