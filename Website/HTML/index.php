@@ -7,22 +7,25 @@
   <link rel="stylesheet" type="text/css" href="../CSS/test.css">
 </head>
 <body>
-  <header id="header-bar">
-      <div id="header-next-game">
-        <input type="button" id="next-game-button" onClick="" value="Next Game"/>
-      </div>
-      <div id="header-result">
-        
-      </div>
-      <div id="header-score">
-        <p>X Points</p>
-      </div>
+  <header>
+    <div id="header-score">
+      <table id="header-score-table">
+        <tr>
+          <th id="round">Round</th>
+          <th>Score</th>
+        </tr>
+        <tr>
+          <th id="round">0 / 5</th>
+          <th>999</th>
+        </tr>
+      </table>
+    </div>
   </header>
   <div class="result-popup-window">
     <div id="result-popup">
       <span id="result-text"></span>
-      <span id="X Points"></span>
-      <span>test</span>
+      <span id="result-score">You gained X Points</span>
+      <input type="button" id="next-game-button" onClick="" value="Next Game"/>
     </div>
   </div>
 
