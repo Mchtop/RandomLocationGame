@@ -25,16 +25,15 @@
     <div id="result-popup">
       <span id="result-text"></span>
       <span id="result-score">You gained X Points</span>
-      <input type="button" id="next-button" onClick="nextGameFunction()" value="NEXT" disabled/>
+      <input type="button" id="next-button" onClick="nextGameFunction()" value="Next" disabled/>
     </div>
   </div>
   <script src="../JS/test.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHZk4ZNggKV1Y8Dn80h3XkYbl6XAOmKw&callback=initialize"></script>
   <div class="map-and-button">
-    <div id="map">
-    </div>
-    <input type="button" id="expand-button" onclick="expandFunction()" value="EXPAND"/>
-    <input type="button" id="guess-button" onclick="guessFunction()" value="GUESS"/>
+    <div id="map"></div>
+    <input type="image" src="https://www.pinclipart.com/picdir/middle/171-1713005_svg-resize-clipart-free-download-full-screen-png.png" id="expand-button" onclick="expandFunction()"/>
+    <input type="button" id="guess-button" onclick="guessFunction()" value="Guess Location"/>
   </div>
   <div id="pano"></div>
 </body>
