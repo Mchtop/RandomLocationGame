@@ -8,12 +8,13 @@
 </head>
 <body>
   <header>
+    <script src="../JS/test.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHZk4ZNggKV1Y8Dn80h3XkYbl6XAOmKw&callback=initialize"></script>
     <div id="header-bar">
       <p id="result-text"></p>
+      <input type="button" id="next-button" onClick="nextGameFunction()" value="NEXT" disabled/>
     </div>
   </header>
-  <script src="../JS/test.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHZk4ZNggKV1Y8Dn80h3XkYbl6XAOmKw&callback=initialize"></script>
   <div class="map-and-button">
     <div id="map">
     </div>
