@@ -14,7 +14,7 @@
           <th id="round">Round</th>
           <th>Score</th>
         </tr>
-        <tr>
+        <tr>  
           <th id="round">0 / 5</th>
           <th>999</th>
         </tr>
