@@ -1,17 +1,9 @@
 html, body {
-    font-family: lato;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-
-}
-
-header{
+  font-family: lato;
+  height: 100%;
+  padding: 0;
+  margin: 0;
   background-color: #202020;
-  position: fixed;
-  z-index: 999;
-  width: 100%;
-  height: 5%;
 }
 
 .map-and-button{
@@ -25,12 +17,95 @@ header{
   margin-bottom: 9vh;
 }
 
-#result.text{
-  left: 0;
-  margin-top: -100px;
+#header-bar {
   position: fixed;
-  text-align: center;
   width: 100%;
+  height: 5%;
+  color: white;
+  align-items: center;
+  display: flex;
+}
+
+#header-next-game {
+  height: 100%;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#next-game-button{
+  display: inline-block;
+  background-color: #202020;
+  color: white;
+  height: 80%;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 25px;
+  font-family: inherit;
+  letter-spacing: 2px;
+  font-size: 20px;
+  padding: 0px 25px 0px 25px;
+}
+
+#next-game-button:hover {
+  background-color: #303030;
+  cursor: pointer;
+}
+
+#next-game-button:focus {
+  outline: none;
+}
+
+#header-result {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#result-text {
+  display: inline-block;
+}
+
+#header-score {
+  height: 100%;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-popup-window {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  z-index: 999;
+}
+
+#result-popup {
+  background: white;
+  width: 20%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 999;
+}
+
+#pano {
+  height: 95%;
+  width: 100%;
+  bottom: 0;
+  position: fixed !important;
 }
 
 #map{
@@ -59,14 +134,12 @@ header{
   z-index: 3;
 }
 
-#guess-button:hover {
+#guess-button:hover{
   background-color: green;
   cursor: pointer;
 }
 
-#pano {
-    float: left;
-    height: 95%;
-    width: 100%;
-    top: 5%;
+#guess-button:focus {
+  outline: none;
 }
+
