@@ -16,7 +16,7 @@ header {
 #header-score {
   background-color: #303030;
   color: white;
-  display: inline-block;
+  display: block;
   float: right;
   margin: 15px 15px 0 0;
   border: 1px solid white;
@@ -110,7 +110,6 @@ th {
 #map{
   height: 85%;
   width: 100%;
-  border: solid 1px white;
 }
 
 #expand-button {
@@ -118,8 +117,17 @@ th {
   position: absolute;
   top: 0;
   right: 0;
-  height: 5%;
-  width: 5%;
+  height: 25px;
+  width: 25px;
+  /* transition: all 0.3s ease 0s; */
+}
+
+#expand-button:hover {
+  opacity: 0.8;
+}
+
+#expand-button:focus {
+  outline: none;
 }
 
 #guess-button {

@@ -32,7 +32,7 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCaHZk4ZNggKV1Y8Dn80h3XkYbl6XAOmKw&callback=initialize"></script>
   <div class="map-and-button">
     <div id="map"></div>
-    <input type="image" src="https://www.pinclipart.com/picdir/middle/171-1713005_svg-resize-clipart-free-download-full-screen-png.png" id="expand-button" onclick="expandFunction()"/>
+    <input type="image" src="../IMG/expand.png" id="expand-button" onclick="expandFunction()"/>
     <input type="button" id="guess-button" onclick="guessFunction()" value="Guess Location"/>
   </div>
   <div id="pano"></div>
