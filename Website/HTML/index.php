@@ -24,7 +24,7 @@
   <div class="result-popup-window">
     <div id="result-popup">
       <span id="result-text"></span>
-      <span id="result-score">You gained X Points</span>
+      <span id="result-score"></span>
       <input type="button" id="next-button" onClick="nextGameFunction()" value="Next" disabled/>
     </div>
   </div>

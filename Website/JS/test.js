@@ -7,8 +7,11 @@ var marker;
 var markers = [];
 var bounds;
 var markerCoordinates = [];
+var points = [];
+var distances = [];
 
 function initialize() {
+  toggleElementVisibilityFunction('result-popup');
 
   coordinates = {
     lat: parseFloat((Math.random() * (90 - (-90)) - 90).toFixed(6)),
@@ -34,6 +37,7 @@ function initialize() {
   panorama = new google.maps.StreetViewPanorama(
     document.getElementById('pano'), {
       position: coordinates,
+      preference: 'nearest',
       pov: {
         heading: 34,
         pitch: 10
@@ -87,8 +91,8 @@ function initialize() {
 
     line.setMap(map);
 
-    document.getElementById('guess-button').disabled = true;
-    document.getElementById('next-button').disabled = false;
+    toggleButtonFunction('guess-button');
+    toggleButtonFunction('next-button');
 
     for (var i = 0; i < markers.length; i++) {
       bounds.extend(markers[i].getPosition());
@@ -96,18 +100,24 @@ function initialize() {
 
     map.fitBounds(bounds);
 
-    document.getElementById("result-text").innerHTML = "You're " + haversineDistanceFunction(markers[0], markers[1]) + "km away from the actual location.";
+    distances.push(haversineDistanceFunction(markers[0], markers[1]));
+
+    toggleElementVisibilityFunction('result-popup');
+    
+    document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
+    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points.";
+    
+    
 
 
   }
 
   function nextGameFunction(){
-    toggleElementVisibilityFunction('next-button');
-    toggleElementVisibilityFunction('result-text');
+    toggleElementVisibilityFunction('result-popup');
     randomizeLocationFunction();
     panorama.setPosition(coordinates);
-    document.getElementById('guess-button').disabled = false;
-    document.getElementById('next-button').disabled = true;
+    toggleButtonFunction('guess-button');
+    toggleButtonFunction('next-button');
     clearMarkers();
     clearLines();
   }
@@ -119,6 +129,14 @@ function initialize() {
       x.style.display = "block";
     } else {
       x.style.display = "none";
+    }
+  }
+
+  function toggleButtonFunction(id){
+    if(document.getElementById(id).disabled == false){
+      document.getElementById(id).disabled = true;
+    } else {
+      document.getElementById(id).disabled = false;
     }
   }
 
@@ -151,4 +169,18 @@ function initialize() {
   function clearLines(){
     line.setMap(null);
     markerCoordinates.length = 0;
+  }
+
+  function pointsFunction(dist){
+    var points;
+    if ( dist >= 1000 ){
+      points = 100 - 0.01 * dist;
+    } else if ( dist < 1000 && dist >= 500 ) {
+      points = 200 - 0.01 * dist;
+    } else if ( dist < 500 && dist >= 100 ) {
+      points = 500 - 0.01 * dist;
+    } else {
+      points = 1000 - 0.01 * dist;
+    }
+    return points;
   }
