@@ -9,6 +9,7 @@ var bounds;
 var markerCoordinates = [];
 var points = [];
 var distances = [];
+var svService;
 
 function initialize() {
   toggleElementVisibilityFunction('result-popup');
@@ -33,19 +34,33 @@ function initialize() {
     draggableCursor:'crosshair'
   });
 
-  //initializes panorama view window
-  panorama = new google.maps.StreetViewPanorama(
-    document.getElementById('pano'), {
-      position: coordinates,
-      preference: 'nearest',
-      pov: {
-        heading: 34,
-        pitch: 10
-      },
-      addressControl: false,
-      fullscreenControl: false
-    });
+  // https://stackoverflow.com/questions/14796604/how-to-know-if-street-view-panorama-is-indoors-or-outdoors
 
+  svService = new google.maps.StreetViewService();
+  var panoRequest = {
+      location: new google.maps.LatLng(coordinates["lat"],coordinates["lng"]),
+      preference: google.maps.StreetViewPreference.NEAREST,
+      radius: 5000,
+      source: google.maps.StreetViewSource.OUTDOOR
+  };
+  
+  svService.getPanorama(panoRequest, function(panoData, status){
+      if (status === google.maps.StreetViewStatus.OK) {
+          panorama = new google.maps.StreetViewPanorama(
+              document.getElementById('pano'),
+              {
+                  pano: panoData.location.pano,
+                  pov: {
+                      heading: 10,
+                      pitch: 10
+                  }
+              });
+      } else {
+          //Handle other statuses here
+      }
+  });
+
+  
     google.maps.event.addListener(map, 'click', function(event) {
       placeMarker(event.latLng);
     });
@@ -153,8 +168,8 @@ function initialize() {
   }
 
   function randomizeLocationFunction(){
-    coordinates[0] = parseFloat((Math.random() * (90 - (-90)) - 90).toFixed(6));
-    coordinates[1] = parseFloat((Math.random() * (180 - (-180)) - 180).toFixed(6));
+    coordinates["lat"] = parseFloat((Math.random() * (90 - (-90)) - 90).toFixed(6));
+    coordinates["lng"] = parseFloat((Math.random() * (180 - (-180)) - 180).toFixed(6));
   }
 
   //removes markers from the map
