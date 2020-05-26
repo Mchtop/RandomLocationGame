@@ -21,12 +21,15 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: coordinates,
     zoom: 1,
+    panControl: false,
+    zoomControl: true,
     mapTypeControl: false,
     scaleControl: false,
     streetViewControl: false,
+    overviewMapControl: false,
     rotateControl: false,
     fullscreenControl: false,
-    draggableCursor:'crosshair'
+    draggableCursor:'crosshair',
   });
 
   //initializes panorama view window
