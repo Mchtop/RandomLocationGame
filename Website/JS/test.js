@@ -144,7 +144,7 @@ function initialize() {
   function toggleElementVisibilityFunction(id) {
     var x = document.getElementById(id);
     if (x.style.display === "none") {
-      x.style.display = "block";
+      x.style.display = "flex";
     } else {
       x.style.display = "none";
     }
