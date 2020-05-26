@@ -1,0 +1,58 @@
+html, body {
+  font-family: lato;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #303030;
+  color: white;
+  font-size: 25px;
+}
+
+#end-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+table {
+  width: 35vw;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th, td {
+  border-bottom: 1px solid white;
+}
+
+td {
+  padding: 10px;
+}
+
+#new-game {
+  margin-bottom: 5vh;
+}
+
+#new-game-button {
+  background-color: forestgreen;
+  display: inline-block;
+  margin-top: 5px;
+  border: solid 1px white;
+  border-radius: 30px;
+  font-family: inherit;
+  letter-spacing: 1px;
+  font-size: 30px;
+  color: white;
+  padding: 5px 15px 5px 15px;
+}
+
+#new-game-button:hover{
+  background-color: green;
+  cursor: pointer;
+}
+
+#new-game-button:focus {
+  outline: none;
+}

@@ -26,12 +26,15 @@ function initialize() {
     center: coordinates,
     zoom: 1,
     minZoom: 0.5,
+    panControl: false,
+    zoomControl: true,
     mapTypeControl: false,
     scaleControl: false,
     streetViewControl: false,
+    overviewMapControl: false,
     rotateControl: false,
     fullscreenControl: false,
-    draggableCursor:'crosshair'
+    draggableCursor:'crosshair',
   });
 
   // https://stackoverflow.com/questions/14796604/how-to-know-if-street-view-panorama-is-indoors-or-outdoors
@@ -43,7 +46,7 @@ function initialize() {
       radius: 5000,
       source: google.maps.StreetViewSource.OUTDOOR
   };
-  
+
   svService.getPanorama(panoRequest, function(panoData, status){
       if (status === google.maps.StreetViewStatus.OK) {
           panorama = new google.maps.StreetViewPanorama(
@@ -60,7 +63,7 @@ function initialize() {
       }
   });
 
-  
+
     google.maps.event.addListener(map, 'click', function(event) {
       placeMarker(event.latLng);
     });
@@ -118,11 +121,11 @@ function initialize() {
     distances.push(haversineDistanceFunction(markers[0], markers[1]));
 
     toggleElementVisibilityFunction('result-popup');
-    
+
     document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
     document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points.";
-    
-    
+
+
 
 
   }
