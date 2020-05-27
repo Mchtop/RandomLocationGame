@@ -58,7 +58,8 @@ function initialize() {
                   });
                   panorama.setVisible(true);
                   panorama.setOptions({
-                    showRoadLabels: false
+                    showRoadLabels: false,
+                    addressControl: false
                   });
 
                   map.setStreetView(panorama);
