@@ -9,13 +9,12 @@ var bounds;
 var markerCoordinates = [];
 var points = [];
 var distances = [];
-var svService;
 
 function initialize() {
   toggleElementVisibilityFunction('result-popup');
 
   coordinates = {
-    lat: parseFloat((Math.random() * (90 - (-90)) - 90).toFixed(6)),
+    lat: parseFloat((Math.random() * (73 - (-60)) - 60).toFixed(6)),
     lng: parseFloat((Math.random() * (180 - (-180)) - 180).toFixed(6))
   };
 
@@ -23,7 +22,7 @@ function initialize() {
 
   //initializes simple map view
   map = new google.maps.Map(document.getElementById('map'), {
-    center: coordinates,
+    center: {"lat": 0,"lng": 0},
     zoom: 1,
     minZoom: 0.5,
     panControl: false,
@@ -39,28 +38,33 @@ function initialize() {
 
   // https://stackoverflow.com/questions/14796604/how-to-know-if-street-view-panorama-is-indoors-or-outdoors
 
-  svService = new google.maps.StreetViewService();
-  var panoRequest = {
-      location: new google.maps.LatLng(coordinates["lat"],coordinates["lng"]),
-      preference: google.maps.StreetViewPreference.NEAREST,
-      radius: 5000,
-      source: google.maps.StreetViewSource.OUTDOOR
-  };
+  var point = new google.maps.LatLng(coordinates["lat"], coordinates["lng"]);
 
-  svService.getPanorama(panoRequest, function(panoData, status){
-      if (status === google.maps.StreetViewStatus.OK) {
-          panorama = new google.maps.StreetViewPanorama(
-              document.getElementById('pano'),
-              {
-                  pano: panoData.location.pano,
-                  pov: {
-                      heading: 10,
-                      pitch: 10
-                  }
-              });
-      } else {
-          //Handle other statuses here
-      }
+  panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+
+  var webService = new google.maps.StreetViewService();
+  var checkaround = 500000;
+  webService.getPanoramaByLocation(point,checkaround,function(panoData) {
+    if(panoData){
+
+         if(panoData.location){
+
+            if(panoData.location.latLng){
+
+                  panorama.setPano(panoData.location.pano);
+                  panorama.setPov({
+                    heading: 34,
+                    pitch: 10
+                  });
+                  panorama.setVisible(true);
+                  panorama.setOptions({
+                    showRoadLabels: false
+                  });
+
+                  map.setStreetView(panorama);
+            }
+        }
+    }
   });
 
 
