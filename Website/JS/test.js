@@ -43,7 +43,7 @@ function initialize() {
   panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
   var webService = new google.maps.StreetViewService();
-  var checkaround = 1000000;
+  var checkaround = 5000000;
   webService.getPanorama({
     location: coordinates, 
     radius: checkaround, 
@@ -183,8 +183,9 @@ function initialize() {
 
   function randomizeLocationFunction(){
 
-    switch(Math.floor(Math.random() * 8 + 1)){
+    switch(Math.floor(Math.random() * 8)){
       // formula: (max_Lat/Lng - (min_Lat/Lng)) + (min_Lat/Lng)))
+      // case 8 is currently excluded. add +1 to add case 8 again. Case 8 reduces the amount of streetviews found
       case 1:
         coordinates["lat"] = parseFloat((Math.random() * (70 - (57)) + (57)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (-124 - (-153)) + (-153)).toFixed(6));
