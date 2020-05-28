@@ -38,13 +38,11 @@ function initialize() {
 
   // https://stackoverflow.com/questions/14796604/how-to-know-if-street-view-panorama-is-indoors-or-outdoors
 
-  var point = new google.maps.LatLng(coordinates["lat"], coordinates["lng"]);
-
   panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
   var webService = new google.maps.StreetViewService();
   var checkaround = 500000;
-  webService.getPanoramaByLocation(point,checkaround,function(panoData) {
+  webService.getPanoramaByLocation(coordinates,checkaround,function(panoData) {
     if(panoData){
 
          if(panoData.location){
@@ -59,7 +57,8 @@ function initialize() {
                   panorama.setVisible(true);
                   panorama.setOptions({
                     showRoadLabels: false,
-                    addressControl: false
+                    addressControl: false,
+                    mode : 'html4'
                   });
 
                   map.setStreetView(panorama);
