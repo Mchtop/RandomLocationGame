@@ -14,9 +14,11 @@ function initialize() {
   toggleElementVisibilityFunction('result-popup');
 
   coordinates = {
-    lat: parseFloat((Math.random() * (73 - (-60)) - 60).toFixed(6)),
-    lng: parseFloat((Math.random() * (180 - (-180)) - 180).toFixed(6))
+    lat: 0,
+    lng: 0
   };
+
+  randomizeLocationFunction();
 
   bounds = new google.maps.LatLngBounds();
 
@@ -180,8 +182,42 @@ function initialize() {
   }
 
   function randomizeLocationFunction(){
-    coordinates["lat"] = parseFloat((Math.random() * (90 - (-90)) - 90).toFixed(6));
-    coordinates["lng"] = parseFloat((Math.random() * (180 - (-180)) - 180).toFixed(6));
+
+    switch(Math.floor(Math.random() * 8 + 1)){
+      // formula: (max_Lat/Lng - (min_Lat/Lng)) + (min_Lat/Lng)))
+      case 1:
+        coordinates["lat"] = parseFloat((Math.random() * (70 - (57)) + (57)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (-124 - (-153)) + (-153)).toFixed(6));
+        break;
+      case 2:
+        coordinates["lat"] = parseFloat((Math.random() * (57 - (7)) + (7)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (-60 - (-153)) + (-153)).toFixed(6));
+        break;
+      case 3:
+        coordinates["lat"] = parseFloat((Math.random() * (3 - (-57)) + (-57)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (-33 - (-85)) + (-85)).toFixed(6));
+        break;
+      case 4:
+        coordinates["lat"] = parseFloat((Math.random() * (75 - (59)) + (59)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (-11 - (-60)) + (-60)).toFixed(6));
+        break;
+      case 5:
+        coordinates["lat"] = parseFloat((Math.random() * (71 - (25)) + (25)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (78 - (-18)) + (-18)).toFixed(6));
+        break;
+      case 6:
+        coordinates["lat"] = parseFloat((Math.random() * (25 - (-36)) + (-36)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (78 - (-18)) + (-18)).toFixed(6));
+        break;
+      case 7:
+        coordinates["lat"] = parseFloat((Math.random() * (60 - (-44)) + (-44)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (165 - (78)) + (78)).toFixed(6));
+        break;
+      case 8:
+        coordinates["lat"] = parseFloat((Math.random() * (23 - (-49)) + (-49)).toFixed(6));
+        coordinates["lng"] = parseFloat((Math.random() * (180 - (165)) + (165)).toFixed(6));
+        break;
+    }
   }
 
   //removes markers from the map
