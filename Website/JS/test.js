@@ -41,8 +41,12 @@ function initialize() {
   panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
   var webService = new google.maps.StreetViewService();
-  var checkaround = 500000;
-  webService.getPanoramaByLocation(coordinates,checkaround,function(panoData) {
+  var checkaround = 1000000;
+  webService.getPanorama({
+    location: coordinates, 
+    radius: checkaround, 
+    source: google.maps.StreetViewSource.OUTDOOR},
+    function(panoData) {
     if(panoData){
 
          if(panoData.location){
@@ -58,6 +62,7 @@ function initialize() {
                   panorama.setOptions({
                     showRoadLabels: false,
                     addressControl: false,
+                    fullscreenControl: false,
                     mode : 'html4'
                   });
 
