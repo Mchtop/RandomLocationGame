@@ -54,7 +54,10 @@ function initialize() {
 
          if(panoData.location){
 
-            if(panoData.location.latLng){
+            if(panoData.location.latLng){     
+              
+              coordinates["lat"] = panoData.location.latLng.lat();
+              coordinates["lng"] = panoData.location.latLng.lng();
 
                   panorama.setPano(panoData.location.pano);
                   panorama.setPov({
@@ -75,9 +78,9 @@ function initialize() {
     }
   });
 
-    google.maps.event.addListener(map, 'click', function(event) {
-      placeMarker(event.latLng);
-    });
+  map.addListener('click', function(event) {
+    placeMarker(event.latLng);
+  });
   }
 
   //places a marker on click & moves the marker around
@@ -92,12 +95,17 @@ function initialize() {
       marker.setPosition(location);
     }
 
-    document.getElementById("guess-button").disabled = false;
+    if (document.getElementById("guess-button").disabled == true){
+      toggleButtonFunction("guess-button");
+    }
   }
 
   /* function to place marker with coordinates of the location &
   connect it to the marker placed by the user */
   function guessFunction(){
+
+    google.maps.event.clearListeners(map, 'click');
+
     markerActualLocation = new google.maps.Marker({
       position: coordinates,
       map: map,
@@ -158,9 +166,14 @@ function initialize() {
       mapAndButton.classList.toggle("expand");
     }
 
-    document.getElementById("round").innerHTML("${currentRound + 1} / 5");
+    currentRound++;
+    document.getElementById("currentRound").innerHTML = currentRound + " / 5";
 
     document.getElementById("guess-button").disabled = true;
+
+    map.addListener('click', function(event) {
+      placeMarker(event.latLng);
+    });
   }
 
   // hides/shows the element at the top
