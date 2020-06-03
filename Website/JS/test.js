@@ -153,6 +153,12 @@ function initialize() {
     if(!mapAndButton.classList.contains("expand")){
       mapAndButton.classList.toggle("expand");
     }
+
+    // if it's the last round, "next"-button is hidden and "show results"-button is shown
+    if(currentRound == 5){
+    toggleElementVisibilityFunction("showResults-button");
+    toggleElementVisibilityFunction("next-button");
+    }
   }
 
   // function to initialize next game
@@ -186,7 +192,7 @@ function initialize() {
   // hides/shows the element at the top
   function toggleElementVisibilityFunction(id) {
     var x = document.getElementById(id);
-    if (x.style.display === "none") {
+    if (x.style.display == "none") {
       x.style.display = "flex";
     } else {
       x.style.display = "none";

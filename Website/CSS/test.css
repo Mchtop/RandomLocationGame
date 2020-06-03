@@ -89,6 +89,26 @@ th {
   outline: none;
 }
 
+#showResults-button{
+  background-color: forestgreen;
+  color: white;
+  border: 1px solid white;
+  border-radius: 15px;
+  font-family: inherit;
+  letter-spacing: 2px;
+  font-size: 20px;
+  padding: 5px 15px 5px 15px;
+}
+
+#showResults-button:hover {
+  background-color: green;
+  cursor: pointer;
+}
+
+#showResults-button:focus {
+  outline: none;
+}
+
 #pano {
   height: 100%;
   width: 100%;
