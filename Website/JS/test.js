@@ -7,7 +7,7 @@ var marker;
 var markers = [];
 var bounds;
 var markerCoordinates = [];
-var points = [];
+var score = [];
 var distances = [];
 var currentRound = 0;
 
@@ -140,11 +140,12 @@ function initialize() {
     map.fitBounds(bounds);
 
     distances.push(haversineDistanceFunction(markers[0], markers[1]));
+    score.push(pointsFunction(distances[distances.length - 1]));
 
     toggleElementVisibilityFunction('result-popup');
 
     document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
-    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points.";
+    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points."; 
 
     var mapAndButton = document.getElementById("map-and-button");
     if(!mapAndButton.classList.contains("expand")){
@@ -152,6 +153,7 @@ function initialize() {
     }
   }
 
+  // function to initialize next game
   function nextGameFunction(){
     toggleElementVisibilityFunction('result-popup');
     randomizeLocationFunction();
@@ -174,6 +176,8 @@ function initialize() {
     map.addListener('click', function(event) {
       placeMarker(event.latLng);
     });
+
+    marker.setMap(map);
   }
 
   // hides/shows the element at the top
@@ -251,7 +255,6 @@ function initialize() {
     for (var i = 0; i < markers.length; i++ ) {
       markers[i].setMap(null);
     }
-    markers.length = 0;
   }
 
   //removes polylines from the map
@@ -271,7 +274,7 @@ function initialize() {
     } else {
       points = 1000 - 0.01 * dist;
     }
-    return points;
+    return parseInt(points);
   }
 
   function expandMap(){
