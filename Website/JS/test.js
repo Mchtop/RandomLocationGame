@@ -152,12 +152,6 @@ function initialize() {
     if(!mapAndButton.classList.contains("expand")){
       mapAndButton.classList.toggle("expand");
     }
-
-    for(i = 0; i < distances.length; i++){
-      currentScore += score[i];
-    };
-
-    document.getElementById("currentScore").innerHTML = currentScore;
   }
 
   // function to initialize next game
@@ -177,6 +171,7 @@ function initialize() {
 
     currentRound++;
     document.getElementById("currentRound").innerHTML = currentRound + " / 5";
+    document.getElementById("currentScore").innerHTML = currentScore;
 
     document.getElementById("guess-button").disabled = true;
 
@@ -283,7 +278,9 @@ function initialize() {
       points = 1000 - 0.01 * dist;
     }
 
+    points = parseInt(points);
     score.push(points);
+    currentScore += points;
     return points;
   }
 
