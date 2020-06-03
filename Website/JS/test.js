@@ -7,7 +7,7 @@ var marker;
 var markers = [];
 var bounds;
 var markerCoordinates = [];
-var points = [];
+var score = [];
 var distances = [];
 var currentRound = 0;
 var currentScore = 0;
@@ -141,6 +141,7 @@ function initialize() {
     map.fitBounds(bounds);
 
     distances.push(haversineDistanceFunction(markers[0], markers[1]));
+    score.push(pointsFunction(distances[distances.length - 1]));
 
     toggleElementVisibilityFunction('result-popup');
 
@@ -151,6 +152,12 @@ function initialize() {
     if(!mapAndButton.classList.contains("expand")){
       mapAndButton.classList.toggle("expand");
     }
+
+    for(i = 0; i < distances.length; i++){
+      currentScore += score[i];
+    };
+
+    document.getElementById("currentScore").innerHTML = currentScore;
   }
 
   function nextGameFunction(){
@@ -175,6 +182,10 @@ function initialize() {
     map.addListener('click', function(event) {
       placeMarker(event.latLng);
     });
+
+
+    // test
+    calcScore(currentRound);
   }
 
   // hides/shows the element at the top
@@ -272,6 +283,8 @@ function initialize() {
     } else {
       points = 1000 - 0.01 * dist;
     }
+
+    score.push(points);
     return points;
   }
 
