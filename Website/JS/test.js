@@ -262,6 +262,7 @@ function initialize() {
     for (var i = 0; i < markers.length; i++ ) {
       markers[i].setMap(null);
     }
+    markers.length = 0;
   }
 
   //removes polylines from the map
