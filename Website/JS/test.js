@@ -158,7 +158,8 @@ function initialize() {
       mapAndButton.classList.toggle("expand");
     }
 
-    document.getElementById("round").innerHTML("${currentRound + 1} / 5");
+    currentRound++;
+    document.getElementById("currentRound").innerHTML = currentRound + " / 5";
 
     document.getElementById("guess-button").disabled = true;
   }

@@ -28,7 +28,7 @@ table {
   border-collapse: collapse;
 }
 
-#round {
+.roundBorder {
   border-right: 1px solid white;
 }
 
