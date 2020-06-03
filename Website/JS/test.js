@@ -10,6 +10,7 @@ var markerCoordinates = [];
 var points = [];
 var distances = [];
 var currentRound = 0;
+var currentScore = 0;
 
 function initialize() {
   toggleElementVisibilityFunction('result-popup');
