@@ -146,7 +146,7 @@ function initialize() {
     toggleElementVisibilityFunction('result-popup');
 
     document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
-    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points.";
+    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points."; 
 
     var mapAndButton = document.getElementById("map-and-button");
     if(!mapAndButton.classList.contains("expand")){
@@ -160,6 +160,7 @@ function initialize() {
     document.getElementById("currentScore").innerHTML = currentScore;
   }
 
+  // function to initialize next game
   function nextGameFunction(){
     toggleElementVisibilityFunction('result-popup');
     randomizeLocationFunction();
@@ -182,10 +183,8 @@ function initialize() {
     map.addListener('click', function(event) {
       placeMarker(event.latLng);
     });
-
-
-    // test
-    calcScore(currentRound);
+    
+    marker.setMap(map);
   }
 
   // hides/shows the element at the top
@@ -263,7 +262,6 @@ function initialize() {
     for (var i = 0; i < markers.length; i++ ) {
       markers[i].setMap(null);
     }
-    markers.length = 0;
   }
 
   //removes polylines from the map
