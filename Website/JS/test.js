@@ -10,6 +10,7 @@ var markerCoordinates = [];
 var score = [];
 var distances = [];
 var currentRound = 0;
+var currentScore = 0;
 
 function initialize() {
   toggleElementVisibilityFunction('result-popup');
@@ -168,15 +169,20 @@ function initialize() {
       mapAndButton.classList.toggle("expand");
     }
 
+  // increment current round and show new score
     currentRound++;
     document.getElementById("currentRound").innerHTML = currentRound + " / 5";
+    for(i = 0; i < distances.length; i++){
+      currentScore += score[i];
+    };
+    document.getElementById("currentScore").innerHTML = currentScore;
 
     document.getElementById("guess-button").disabled = true;
 
     map.addListener('click', function(event) {
       placeMarker(event.latLng);
     });
-
+    
     marker.setMap(map);
   }
 
@@ -275,7 +281,10 @@ function initialize() {
     } else {
       points = 1000 - 0.01 * dist;
     }
-    return parseInt(points);
+
+    points = parseInt(points);
+    score.push(points);
+    return points;
   }
 
   function expandMap(){
