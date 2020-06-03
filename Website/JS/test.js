@@ -9,6 +9,7 @@ var bounds;
 var markerCoordinates = [];
 var points = [];
 var distances = [];
+var currentRound = 0;
 
 function initialize() {
   toggleElementVisibilityFunction('result-popup');
@@ -74,7 +75,6 @@ function initialize() {
     }
   });
 
-
     google.maps.event.addListener(map, 'click', function(event) {
       placeMarker(event.latLng);
     });
@@ -91,6 +91,8 @@ function initialize() {
     } else {
       marker.setPosition(location);
     }
+
+    document.getElementById("guess-button").disabled = false;
   }
 
   /* function to place marker with coordinates of the location &
@@ -136,9 +138,10 @@ function initialize() {
     document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
     document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points.";
 
-
-
-
+    var mapAndButton = document.getElementById("map-and-button");
+    if(!mapAndButton.classList.contains("expand")){
+      mapAndButton.classList.toggle("expand");
+    }
   }
 
   function nextGameFunction(){
@@ -149,6 +152,15 @@ function initialize() {
     toggleButtonFunction('next-button');
     clearMarkers();
     clearLines();
+
+    var mapAndButton = document.getElementById("map-and-button");
+    if(mapAndButton.classList.contains("expand")){
+      mapAndButton.classList.toggle("expand");
+    }
+
+    document.getElementById("round").innerHTML("${currentRound + 1} / 5");
+
+    document.getElementById("guess-button").disabled = true;
   }
 
   // hides/shows the element at the top
@@ -247,4 +259,9 @@ function initialize() {
       points = 1000 - 0.01 * dist;
     }
     return points;
+  }
+
+  function expandMap(){
+    var mapAndButton = document.getElementById("map-and-button");
+    mapAndButton.classList.toggle("expand");
   }
