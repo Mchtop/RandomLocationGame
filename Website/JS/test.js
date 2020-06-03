@@ -142,6 +142,7 @@ function initialize() {
 
     distances.push(haversineDistanceFunction(markers[0], markers[1]));
     score.push(pointsFunction(distances[distances.length - 1]));
+    currentScore += pointsFunction(distances[distances.length - 1]);
 
     toggleElementVisibilityFunction('result-popup');
 
@@ -170,7 +171,7 @@ function initialize() {
     }
 
     currentRound++;
-    document.getElementById("currentRound").innerHTML = currentRound + " / 5";
+    document.getElementById("currentRound").innerHTML = currentRound + " / 5"
     document.getElementById("currentScore").innerHTML = currentScore;
 
     document.getElementById("guess-button").disabled = true;
@@ -280,7 +281,6 @@ function initialize() {
 
     points = parseInt(points);
     score.push(points);
-    currentScore += points;
     return points;
   }
 
