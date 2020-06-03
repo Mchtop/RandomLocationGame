@@ -105,6 +105,12 @@ th {
   left: 10px;
   bottom: 0;
   margin-bottom: 9vh;
+  transition: all .3s ease;
+}
+
+.map-and-button.expand {
+  height: 50vh;
+  width: 50vw;
 }
 
 #map{
@@ -131,7 +137,7 @@ th {
 
 #guess-button {
   background-color: forestgreen;
-  height: 15%;
+  height: 5vh;
   width: 100%;
   margin-top: 5px;
   border: solid 1px white;
@@ -149,4 +155,13 @@ th {
 
 #guess-button:focus {
   outline: none;
+}
+
+#guess-button:disabled, #guess-button[disabled] {
+  background-color: #505050;
+}
+
+#guess-button:disabled:hover, #guess-button[disabled]:hover{
+  background-color: #505050;
+  cursor: default;
 }
