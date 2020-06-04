@@ -155,7 +155,7 @@ function initialize() {
     }
 
     // if it's the last round, "next"-button is hidden and "show results"-button is shown
-    if(currentRound == 0){
+    if(currentRound == 5){
       toggleElementVisibilityFunctionFlex("showResults-button");
       toggleElementVisibilityFunctionFlex("next-button");
     }
@@ -305,7 +305,8 @@ function initialize() {
   }
 
   function showResults(){
-    toggleElementVisibilityFunctionFlex("end-page");    
+    toggleElementVisibilityFunctionFlex("end-page");   
+    toggleElementVisibilityFunctionFlex("result-popup");    
     toggleElementVisibilityFunctionBlock("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
@@ -313,6 +314,7 @@ function initialize() {
 
   function newGame(){
     toggleElementVisibilityFunctionFlex("end-page");    
+    toggleElementVisibilityFunctionFlex("result-popup");    
     toggleElementVisibilityFunctionBlock("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
