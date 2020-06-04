@@ -13,7 +13,7 @@ var currentRound = 0;
 var currentScore = 0;
 
 function initialize() {
-  toggleElementVisibilityFunction('result-popup');
+  toggleElementVisibilityFunctionFlex('result-popup');
 
   coordinates = {
     lat: 0,
@@ -144,7 +144,7 @@ function initialize() {
     score.push(pointsFunction(distances[distances.length - 1]));
     currentScore += pointsFunction(distances[distances.length - 1]);
 
-    toggleElementVisibilityFunction('result-popup');
+    toggleElementVisibilityFunctionFlex('result-popup');
 
     document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
     document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points."; 
@@ -155,15 +155,15 @@ function initialize() {
     }
 
     // if it's the last round, "next"-button is hidden and "show results"-button is shown
-    if(currentRound == 5){
-    toggleElementVisibilityFunction("showResults-button");
-    toggleElementVisibilityFunction("next-button");
+    if(currentRound == 0){
+      toggleElementVisibilityFunctionFlex("showResults-button");
+      toggleElementVisibilityFunctionFlex("next-button");
     }
   }
 
   // function to initialize next game
   function nextGameFunction(){
-    toggleElementVisibilityFunction('result-popup');
+    toggleElementVisibilityFunctionFlex('result-popup');
     randomizeLocationFunction();
     panorama.setPosition(coordinates);
     toggleButtonFunction('guess-button');
@@ -190,10 +190,19 @@ function initialize() {
   }
 
   // hides/shows the element at the top
-  function toggleElementVisibilityFunction(id) {
+  function toggleElementVisibilityFunctionFlex(id) {
     var x = document.getElementById(id);
     if (x.style.display == "none") {
       x.style.display = "flex";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function toggleElementVisibilityFunctionBlock(id) {
+    var x = document.getElementById(id);
+    if (x.style.display == "none") {
+      x.style.display = "block";
     } else {
       x.style.display = "none";
     }
@@ -293,4 +302,18 @@ function initialize() {
   function expandMap(){
     var mapAndButton = document.getElementById("map-and-button");
     mapAndButton.classList.toggle("expand");
+  }
+
+  function showResults(){
+    toggleElementVisibilityFunctionFlex("end-page");    
+    toggleElementVisibilityFunctionBlock("header-score");
+    toggleElementVisibilityFunctionBlock("map-and-button");
+    toggleElementVisibilityFunctionFlex("pano");
+  }
+
+  function newGame(){
+    toggleElementVisibilityFunctionFlex("end-page");    
+    toggleElementVisibilityFunctionBlock("header-score");
+    toggleElementVisibilityFunctionBlock("map-and-button");
+    toggleElementVisibilityFunctionFlex("pano");
   }
