@@ -9,7 +9,7 @@ var bounds;
 var markerCoordinates = [];
 var score = [];
 var distances = [];
-var currentRound = 0;
+var currentRound = 1;
 var currentScore = 0;
 
 function initialize() {
