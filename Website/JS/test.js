@@ -47,16 +47,16 @@ function initialize() {
   var webService = new google.maps.StreetViewService();
   var checkaround = 5000000;
   webService.getPanorama({
-    location: coordinates, 
-    radius: checkaround, 
+    location: coordinates,
+    radius: checkaround,
     source: google.maps.StreetViewSource.OUTDOOR},
     function(panoData) {
     if(panoData){
 
          if(panoData.location){
 
-            if(panoData.location.latLng){     
-              
+            if(panoData.location.latLng){
+
               coordinates["lat"] = panoData.location.latLng.lat();
               coordinates["lng"] = panoData.location.latLng.lng();
 
@@ -86,7 +86,7 @@ function initialize() {
 
   //places a marker on click & moves the marker around
   function placeMarker(location) {
-    if (!marker || !marker.setPosition) {
+    if (!marker || !marker.setPosition ) {
       marker = new google.maps.Marker({
         position: location,
         map: map,
@@ -113,6 +113,9 @@ function initialize() {
     });
 
     markers.push(markerActualLocation);
+    if(markers.length < 2){
+      markers.push(marker);
+    }
 
     for(var marker in markers){
       latLng = {
@@ -147,7 +150,7 @@ function initialize() {
     toggleElementVisibilityFunctionFlex('result-popup');
 
     document.getElementById("result-text").innerHTML = "You're " + distances[distances.length - 1] + "km away from the actual location.";
-    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points."; 
+    document.getElementById("result-score").innerHTML = "You gained " + pointsFunction(distances[distances.length - 1])+ " points.";
 
     var mapAndButton = document.getElementById("map-and-button");
     if(!mapAndButton.classList.contains("expand")){
@@ -164,12 +167,34 @@ function initialize() {
   // function to initialize next game
   function nextGameFunction(){
     toggleElementVisibilityFunctionFlex('result-popup');
-    randomizeLocationFunction();
-    panorama.setPosition(coordinates);
     toggleButtonFunction('guess-button');
     toggleButtonFunction('next-button');
     clearMarkers();
     clearLines();
+
+    randomizeLocationFunction();
+    var webService = new google.maps.StreetViewService();
+    var checkaround = 5000000;
+    webService.getPanorama({
+      location: coordinates,
+      radius: checkaround,
+      source: google.maps.StreetViewSource.OUTDOOR},
+      function(panoData) {
+      if(panoData){
+
+          if(panoData.location){
+
+              if(panoData.location.latLng){
+
+                coordinates["lat"] = panoData.location.latLng.lat();
+                coordinates["lng"] = panoData.location.latLng.lng();
+                panorama.setPosition(panoData.location.latLng);
+
+                map.setStreetView(panorama);
+              }
+          }
+      }
+    });
 
     var mapAndButton = document.getElementById("map-and-button");
     if(mapAndButton.classList.contains("expand")){
@@ -185,8 +210,6 @@ function initialize() {
     map.addListener('click', function(event) {
       placeMarker(event.latLng);
     });
-    
-    marker.setMap(map);
   }
 
   // hides/shows the element at the top
@@ -273,13 +296,13 @@ function initialize() {
     for (var i = 0; i < markers.length; i++ ) {
       markers[i].setMap(null);
     }
-    markers.length = 0;
+    markers = [];
   }
 
   //removes polylines from the map
   function clearLines(){
     line.setMap(null);
-    markerCoordinates.length = 0;
+    markerCoordinates = [];
   }
 
   function pointsFunction(dist){
@@ -305,16 +328,16 @@ function initialize() {
   }
 
   function showResults(){
-    toggleElementVisibilityFunctionFlex("end-page");   
-    toggleElementVisibilityFunctionFlex("result-popup");    
+    toggleElementVisibilityFunctionFlex("end-page");
+    toggleElementVisibilityFunctionFlex("result-popup");
     toggleElementVisibilityFunctionBlock("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
   }
 
   function newGame(){
-    toggleElementVisibilityFunctionFlex("end-page");    
-    toggleElementVisibilityFunctionFlex("result-popup");    
+    toggleElementVisibilityFunctionFlex("end-page");
+    toggleElementVisibilityFunctionFlex("result-popup");
     toggleElementVisibilityFunctionBlock("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
