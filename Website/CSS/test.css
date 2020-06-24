@@ -145,6 +145,7 @@ th {
   right: 0;
   height: 25px;
   width: 25px;
+  padding: 1px;
 }
 
 #expand-button:hover {
@@ -153,6 +154,18 @@ th {
 
 #expand-button:focus {
   outline: none;
+}
+
+#expand-bg {
+  z-index: 499;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 25px;
+  width: 25px;
+  padding: 1px;
+  background-color: #000000;
+  opacity: 0.8;
 }
 
 #guess-button {
