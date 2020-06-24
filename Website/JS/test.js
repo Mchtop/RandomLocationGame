@@ -86,6 +86,13 @@ function initialize() {
 
   //places a marker on click & moves the marker around
   function placeMarker(location) {
+
+    if(marker){
+      if(!map.getBounds().contains(marker.getPosition())){
+        marker.setMap(map);
+      }
+    }
+
     if (!marker || !marker.setPosition ) {
       marker = new google.maps.Marker({
         position: location,
