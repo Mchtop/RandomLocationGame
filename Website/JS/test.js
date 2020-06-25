@@ -24,7 +24,6 @@ function initialize() {
 
   bounds = new google.maps.LatLngBounds();
 
-  //initializes simple map view
   map = new google.maps.Map(document.getElementById('map'), {
     center: {"lat": 0,"lng": 0},
     zoom: 1,
@@ -39,8 +38,6 @@ function initialize() {
     fullscreenControl: false,
     draggableCursor:'crosshair',
   });
-
-  // https://stackoverflow.com/questions/14796604/how-to-know-if-street-view-panorama-is-indoors-or-outdoors
 
   panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
@@ -84,7 +81,8 @@ function initialize() {
   });
   }
 
-  //places a marker on click & moves the marker around
+  /* method to place a marker on the map & to move the marker around
+  input: click event -> coordinates(lat, lng) */
   function placeMarker(location) {
 
     if(marker){
@@ -108,8 +106,7 @@ function initialize() {
     }
   }
 
-  /* function to place marker with coordinates of the location &
-  connect it to the marker placed by the user */
+  /* method to end the round */
   function guessFunction(){
 
     google.maps.event.clearListeners(map, 'click');
@@ -171,7 +168,7 @@ function initialize() {
     }
   }
 
-  // function to initialize next game
+  /* method to start a new round */
   function nextGameFunction(){
     toggleElementVisibilityFunctionFlex('result-popup');
     toggleButtonFunction('guess-button');
@@ -219,7 +216,7 @@ function initialize() {
     });
   }
 
-  // hides/shows the element at the top
+  /* method to make elements visible through use of "flex" style */
   function toggleElementVisibilityFunctionFlex(id) {
     var x = document.getElementById(id);
     if (x.style.display == "none") {
@@ -229,6 +226,7 @@ function initialize() {
     }
   }
 
+  /* method to make elements visible through use of "block" style */
   function toggleElementVisibilityFunctionBlock(id) {
     var x = document.getElementById(id);
     if (x.style.display == "none") {
@@ -238,6 +236,7 @@ function initialize() {
     }
   }
 
+  /* method to toggle clickability of an element*/
   function toggleButtonFunction(id){
     if(document.getElementById(id).disabled == false){
       document.getElementById(id).disabled = true;
@@ -246,7 +245,7 @@ function initialize() {
     }
   }
 
-  // calculates distance between 2 points
+  /* method to calculate distance between 2 google maps markers */
   function haversineDistanceFunction(mk1, mk2) {
     var R = 3958.8; // Radius of the Earth in miles
     var rlat1 = mk1.position.lat() * (Math.PI/180); // Convert degrees to radians
@@ -258,6 +257,7 @@ function initialize() {
     return Math.round(d);
   }
 
+  /* method to limit the coordinates used to places that have streetview */
   function randomizeLocationFunction(){
 
     switch(Math.floor(Math.random() * 8)){
@@ -298,7 +298,7 @@ function initialize() {
     }
   }
 
-  //removes markers from the map
+  /* method to remove markers from the map */
   function clearMarkers(){
     for (var i = 0; i < markers.length; i++ ) {
       markers[i].setMap(null);
@@ -306,12 +306,13 @@ function initialize() {
     markers = [];
   }
 
-  //removes polylines from the map
+  /* method to remove polylines from the map */
   function clearLines(){
     line.setMap(null);
     markerCoordinates = [];
   }
 
+  /* method to calculate points*/
   function pointsFunction(dist){
     var points;
     if ( dist >= 1000 ){
@@ -329,11 +330,13 @@ function initialize() {
     return points;
   }
 
+  /* method to increase/decrease map size*/
   function expandMap(){
     var mapAndButton = document.getElementById("map-and-button");
     mapAndButton.classList.toggle("expand");
   }
 
+  /* method to show results*/
   function showResults(){
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
@@ -342,6 +345,7 @@ function initialize() {
     toggleElementVisibilityFunctionFlex("pano");
   }
 
+  /* method to start new game */
   function newGame(){
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
