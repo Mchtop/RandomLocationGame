@@ -261,35 +261,35 @@ function initialize() {
     switch(Math.floor(Math.random() * 8)){
       // formula: (max_Lat/Lng - (min_Lat/Lng)) + (min_Lat/Lng)))
       // case 8 is currently excluded. add +1 to add case 8 again. Case 8 reduces the amount of streetviews found
-      case 1:
+      case 0:
         coordinates["lat"] = parseFloat((Math.random() * (70 - (57)) + (57)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (-124 - (-153)) + (-153)).toFixed(6));
         break;
-      case 2:
+      case 1:
         coordinates["lat"] = parseFloat((Math.random() * (57 - (7)) + (7)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (-60 - (-153)) + (-153)).toFixed(6));
         break;
-      case 3:
+      case 2:
         coordinates["lat"] = parseFloat((Math.random() * (3 - (-57)) + (-57)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (-33 - (-85)) + (-85)).toFixed(6));
         break;
-      case 4:
+      case 3:
         coordinates["lat"] = parseFloat((Math.random() * (75 - (59)) + (59)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (-11 - (-60)) + (-60)).toFixed(6));
         break;
-      case 5:
+      case 4:
         coordinates["lat"] = parseFloat((Math.random() * (71 - (25)) + (25)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (78 - (-18)) + (-18)).toFixed(6));
         break;
-      case 6:
+      case 5:
         coordinates["lat"] = parseFloat((Math.random() * (25 - (-36)) + (-36)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (78 - (-18)) + (-18)).toFixed(6));
         break;
-      case 7:
+      case 6:
         coordinates["lat"] = parseFloat((Math.random() * (60 - (-44)) + (-44)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (165 - (78)) + (78)).toFixed(6));
         break;
-      case 8:
+      case 7:
         coordinates["lat"] = parseFloat((Math.random() * (23 - (-49)) + (-49)).toFixed(6));
         coordinates["lng"] = parseFloat((Math.random() * (180 - (165)) + (165)).toFixed(6));
         break;
