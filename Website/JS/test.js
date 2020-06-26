@@ -312,19 +312,9 @@ function initialize() {
 
   /* method to calculate points*/
   function pointsFunction(dist){
-    var points;
-    if ( dist >= 1000 ){
-      points = 100 - 0.01 * dist;
-    } else if ( dist < 1000 && dist >= 500 ) {
-      points = 200 - 0.01 * dist;
-    } else if ( dist < 500 && dist >= 100 ) {
-      points = 500 - 0.01 * dist;
-    } else {
-      points = 1000 - 0.01 * dist;
-    }
+    var points = 1000 / (1 + Math.exp(dist/1000));
 
     points = parseInt(points);
-    score.push(points);
     return points;
   }
 
@@ -336,6 +326,15 @@ function initialize() {
 
   /* method to show results*/
   function showResults(){
+
+    var endscore = 0;
+    for(i = 0; i < 5; i++){
+      document.getElementById("score-" + (i+1)).innerHTML= "" + score[i];
+      document.getElementById("distance-" + (i+1)).innerHTML= "" +distances[i];
+      endscore += score[i];
+    }
+    document.getElementById("endscore").innerHTML="Total Points: "+ endscore+" Pts.";
+
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
     toggleElementVisibilityFunctionBlock("header-score");
