@@ -86,8 +86,8 @@ function initialize() {
   function placeMarker(location) {
 
     if(marker){
-      if(!map.getBounds().contains(marker.getPosition())){
-        marker.setMap(map);
+      if(marker.getVisible() == false){
+        marker.setVisible(true);
         markers.push(marker);
       }
     }
@@ -299,7 +299,7 @@ function initialize() {
   /* method to remove markers from the map */
   function clearMarkers(){
     for (var i = 0; i < markers.length; i++ ) {
-      markers[i].setMap(null);
+      markers[i].setVisible(false);
     }
     markers = [];
   }
