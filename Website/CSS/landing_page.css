@@ -17,6 +17,12 @@ h1 {
 
 h2 {
     text-align: center;
+    z-index: 999;
+}
+
+h2 a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .container__item {
@@ -32,9 +38,12 @@ h2 {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    display: table;
     font-family: "Montserrat", sans-serif;
     color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
 }
 
 .container-wrapper {
@@ -51,7 +60,6 @@ h2 {
     border-radius: 50%;
     margin: 0 auto;
     position: relative;
-    top: 7rem;
 }
 
 .ellipse-container .greeting {
@@ -63,7 +71,12 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 4rem;
     font-size: 8rem;
-    font-weight: 400;
+    font-weight: 700;
+}
+
+.ellipse-container .greeting:hover {
+    opacity: .7;
+    transition: .2s ease-in-out;
 }
 
 .ellipse-container .greeting:after {
@@ -90,10 +103,31 @@ h2 {
     height: 100%;
     border-width: 1px;
     border-color: #ffffff;
-    animation: ellipseOrbit 15s ease-in-out infinite;
+    animation: ellipseOrbit 20s ease-in-out infinite;
+}
+.ellipse__outer--thin2 {
+    width: 100%;
+    height: 100%;
+    border-width: 1px;
+    border-color: #ffffff;
+    animation: ellipseRotate 20s ease-in-out infinite;
 }
 
 .ellipse__outer--thin:after {
+    content: '';
+    background-image: url(../IMG/earth_trans.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    color: #000;
+    position: absolute;
+    opacity: .4;
+}
+
+.ellipse__outer--thin2:after {
     content: '';
     background-image: url(../IMG/ellipses_dial.png);
     background-repeat: no-repeat;
@@ -104,7 +138,56 @@ h2 {
     right: 0;
     color: #000;
     position: absolute;
-    opacity: .3;
+    opacity: .4;
 }
+
+.ellipse__orbit {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-width: 2px;
+    border-color: #fff;
+    top: 5rem;
+    right: 6.7rem;
+}
+
+.ellipse__orbit:before {
+    content: '';
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #fff;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes ellipseRotate {
+    0% {
+        transform: rotate(-45deg);
+    }
+
+    100% {
+        transform: rotate(-405deg);
+    }
+}
+
+@keyframes ellipseOrbit {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
 
 
