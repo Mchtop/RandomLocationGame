@@ -6,10 +6,11 @@ html, body {
 }
 
 header {
+  background: #202020;
   z-index: 500;
   pointer-events: none;
   position: fixed;
-  height: 100%;
+  height: 6%;
   width: 100%;
 }
 
@@ -34,6 +35,10 @@ table {
 
 th {
   padding: 0px 10px 0px 10px;
+}
+
+.align-right {
+  text-align: right;
 }
 
 #result-popup-window {
@@ -70,7 +75,7 @@ th {
 
 #next-button{
   display: inline-block;
-  background-color: #202020;
+  background-color: forestgreen;
   color: white;
   border: 1px solid white;
   border-radius: 15px;
@@ -81,7 +86,7 @@ th {
 }
 
 #next-button:hover {
-  background-color: #303030;
+  background-color: green;
   cursor: pointer;
 }
 
@@ -174,11 +179,19 @@ th {
   width: 100%;
   margin-top: 5px;
   border: solid 1px white;
-  border-radius: 30px;
+  border-radius: 15px;
   font-family: inherit;
   letter-spacing: 1px;
   font-size: 20px;
   color: white;
+  transition: .2s;
+}
+
+#guess-button:before {
+  content: '';
+  display: block;
+  position: absolute;
+  background: #fff .5;
 }
 
 #guess-button:hover{
@@ -201,12 +214,13 @@ th {
 
 #end-page {
   font-family: lato;
+  font-weight: 800;
   height: 100%;
   padding: 0;
   margin: 0;
   color: white;
   font-size: 25px;
-  background-color: #303030;
+  background-image: url(../IMG/babd6ec29409bff42a161e303260ed7a.jpg);
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -220,6 +234,14 @@ th {
   border-collapse: collapse;
   text-align: center;
   z-index: 999;
+}
+
+#result-table-bg {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 998;
 }
 
 #end-page th, td {

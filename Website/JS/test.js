@@ -330,11 +330,11 @@ function initialize() {
 
     var endscore = 0;
     for(i = 0; i < 5; i++){
-      document.getElementById("score-" + (i+1)).innerHTML= "" + score[i];
-      document.getElementById("distance-" + (i+1)).innerHTML= "" +distances[i];
+      document.getElementById("score-" + (i+1)).innerHTML= "" + score[i] + " pts";
+      document.getElementById("distance-" + (i+1)).innerHTML= "" + distances[i] + " km";
       endscore += score[i];
     }
-    document.getElementById("endscore").innerHTML="Total Points: "+ endscore+" Pts.";
+    document.getElementById("endscore").innerHTML="Total Points: " + endscore + " pts";
 
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
