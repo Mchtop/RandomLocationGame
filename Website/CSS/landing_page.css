@@ -2,6 +2,7 @@ html {
     font-size: 62.5%;
     width: 100%;
     height: 100%;
+    color: #fff;
 }
 
 body {
@@ -33,7 +34,8 @@ h2 a {
     width: 100%;
     min-height: 100%;
     height: 100vh;
-    background-image: url(../IMG/Mountain-wallpaper-HD-free-download.png);
+     background-image: url(../IMG/babd6ec29409bff42a161e303260ed7a.jpg);
+    /*background: #202020;*/
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,18 +81,6 @@ h2 a {
     transition: .2s ease-in-out;
 }
 
-.ellipse-container .greeting:after {
-    content: '';
-    width: .3rem;
-    height: .3rem;
-    border-radius: 50%;
-    display: inline-block;
-    background-color: #ffffff;
-    position: relative;
-    top: -0.65rem;
-    left: -5.05rem;
-}
-
 .ellipse {
     border-radius: 50%;
     position: absolute;
@@ -103,14 +93,14 @@ h2 a {
     height: 100%;
     border-width: 1px;
     border-color: #ffffff;
-    animation: ellipseOrbit 20s ease-in-out infinite;
+    animation: ellipseOrbit 50s ease-in-out infinite;
 }
 .ellipse__outer--thin2 {
     width: 100%;
     height: 100%;
     border-width: 1px;
     border-color: #ffffff;
-    animation: ellipseRotate 20s ease-in-out infinite;
+    animation: ellipseRotate 50s ease-in-out infinite;
 }
 
 .ellipse__outer--thin:after {
