@@ -312,7 +312,8 @@ function initialize() {
 
   /* method to calculate points*/
   function pointsFunction(dist){
-    var points = 1000 / (1 + Math.exp(dist/1000));
+    // 5000*((1-0.0007)^x)
+    var points = 5000 * Math.pow((1-0.0007),dist);
 
     points = parseInt(points);
     return points;
