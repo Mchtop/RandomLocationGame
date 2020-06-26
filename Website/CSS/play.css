@@ -5,28 +5,63 @@ html, body {
   margin: 0;
 }
 
-header {
-  background: #202020;
-  z-index: 500;
+#header-bar {
+  background: rgba(0,0,0,0.8);
+  z-index: 998;
   pointer-events: none;
-  position: fixed;
   height: 6%;
   width: 100%;
+  position: relative;
+}
+
+#header-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#header-icon2 {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  left: 5px;
+  background-image: url(../IMG/earth_trans.png);
+  background-size: cover;
+  animation: ellipseOrbit 20s ease-in-out infinite;
+}
+
+#header-timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 20%;
+  color: white;
+  font-size: 200%;
 }
 
 #header-score {
-  background-color: #303030;
   color: white;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
   float: right;
-  margin: 15px 15px 0 0;
-  border: 1px solid white;
-  padding: 5px;
-  border-radius: 10px;
+  height: 100%;
 }
 
 table {
   border-collapse: collapse;
+  font-size: 120%;
 }
 
 .roundBorder {
@@ -78,7 +113,7 @@ th {
   background-color: forestgreen;
   color: white;
   border: 1px solid white;
-  border-radius: 15px;
+  border-radius: 10px;
   font-family: inherit;
   letter-spacing: 2px;
   font-size: 20px;
@@ -174,28 +209,22 @@ th {
 }
 
 #guess-button {
-  background-color: forestgreen;
+  background: forestgreen;
+  position: absolute;
+  margin-top: 5px;
+  color: #fff;
   height: 5vh;
   width: 100%;
-  margin-top: 5px;
   border: solid 1px white;
+  font-size: 20px;
   border-radius: 15px;
   font-family: inherit;
   letter-spacing: 1px;
-  font-size: 20px;
-  color: white;
-  transition: .2s;
+  transition: .3s;
 }
 
-#guess-button:before {
-  content: '';
-  display: block;
-  position: absolute;
-  background: #fff .5;
-}
-
-#guess-button:hover{
-  background-color: green;
+#guess-button:hover {
+  background: green;
   cursor: pointer;
 }
 
@@ -204,11 +233,11 @@ th {
 }
 
 #guess-button:disabled, #guess-button[disabled] {
-  background-color: #505050;
+  background: rgba(0,0,0,0.8);
 }
 
 #guess-button:disabled:hover, #guess-button[disabled]:hover{
-  background-color: #505050;
+  background: rgba(0,0,0,0.8);
   cursor: default;
 }
 
@@ -284,4 +313,14 @@ th {
 
 #new-game-button:focus {
   outline: none;
+}
+
+@keyframes ellipseOrbit {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
 }
