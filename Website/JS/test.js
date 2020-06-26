@@ -88,6 +88,7 @@ function initialize() {
     if(marker){
       if(!map.getBounds().contains(marker.getPosition())){
         marker.setMap(map);
+        markers.push(marker);
       }
     }
 
@@ -117,9 +118,6 @@ function initialize() {
     });
 
     markers.push(markerActualLocation);
-    if(markers.length < 2){
-      markers.push(marker);
-    }
 
     for(var marker in markers){
       latLng = {
