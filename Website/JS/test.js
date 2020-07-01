@@ -12,6 +12,14 @@ var distances = [];
 var currentRound = 1;
 var currentScore = 0;
 
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let displaySeconds = 0;
+let displayMinutes = 0;
+let displayHours = 0;
+let interval = window.setInterval(stopwatch, 1000);
+
 function initialize() {
   toggleElementVisibilityFunctionFlex('result-popup');
 
@@ -344,10 +352,50 @@ function initialize() {
   }
 
   /* method to start new game */
-  function newGame(){
+  function hideResults(){
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
-    toggleElementVisibilityFunctionBlock("header-score");
+    //toggleElementVisibilityFunctionBlock("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
+  }
+
+  function stopwatch(){
+    seconds++;
+
+    if(seconds / 60 === 1) {
+      seconds = 0;
+      minutes++;
+
+      if(minutes / 60 === 1) {
+        minutes = 0;
+        hours++;
+      }
+    }
+
+    if(seconds < 10) {
+      displaySeconds = "0" + seconds.toString();
+    } else {
+      displaySeconds = seconds;
+    }
+
+    if(minutes < 10) {
+      displayMinutes = "0" + minutes.toString();
+    } else {
+      displayMinutes = minutes;
+    }
+
+    if(hours < 10) {
+      displayHours = "0" + hours.toString();
+    } else {
+      displayHours = hours;
+    }
+
+    document.getElementById("header-timer-timer").innerHTML = displayHours + ":" + displayMinutes + ":" + displaySeconds;
+  }
+
+  function stopTimer() {
+    if(currentRound == 5){
+      window.clearInterval(interval)
+    }
   }

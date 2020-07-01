@@ -6,13 +6,13 @@
 <head>
   <link rel="stylesheet" type="text/css" href="../CSS/play.css">
 </head>
-<body>
+<body onload="stopwatch()">
   <header id="header-bar">
     <div id="header-icon">
       <div id="header-icon2"></div>
     </div>
     <div id="header-timer">
-      <span>00:00:00</span>
+      <span id="header-timer-timer"></span>
     </div>
     <div id="header-score">
       <table id="header-score-table">
@@ -41,7 +41,7 @@
     <div id="map"></div>
     <input type="image" src="../IMG/expand2.png" id="expand-button" onclick="expandMap()"/>
     <div id="expand-bg"></div>
-    <input type="button" disabled id="guess-button" onclick="guessFunction()" value="Guess Location"/>
+    <input type="button" disabled id="guess-button" onclick="guessFunction(); stopTimer()" value="Guess Location"/>
   </div>
   <div id="pano"></div>
   <div id="end-page" style="display: none">
@@ -87,8 +87,9 @@
     <div>
       <h2 id="endscore"></h2>
     </div>
-    <div id="new-game">
-      <input id="new-game-button" type="button" onClick="newGame()"value="Hide Results">
+    <div id="end-screen-buttons">
+      <input id="hide-results-button" type="button" onClick="hideResults()"value="Hide Results">
+      <input id="new-game-button" type="button" onClick="newGame()"value="New Game">
     </div>
   </div>
 </body>

@@ -90,7 +90,7 @@ th {
 }
 
 #result-popup {
-  background: #303030;
+  background: rgba(0,0,0,0.8);
   color: white;
   border: 1px solid white;
   border-radius: 25px;
@@ -288,13 +288,34 @@ th {
   text-align: center;
 }
 
-#new-game {
+#end-screen-buttons {
   z-index: 999;
   margin-bottom: 5vh;
 }
 
+#hide-results-button {
+  background: rgba(0,0,0,0.6);
+  display: inline-block;
+  margin-top: 5px;
+  border: solid 1px white;
+  border-radius: 30px;
+  font-family: inherit;
+  letter-spacing: 1px;
+  font-size: 30px;
+  color: white;
+  padding: 5px 15px 5px 15px;
+}
+
+#hide-results-button:hover{
+  background-color: green;
+  cursor: pointer;
+}
+
+#hide-results-button:focus {
+  outline: none;
+}
 #new-game-button {
-  background-color: forestgreen;
+  background: forestgreen;
   display: inline-block;
   margin-top: 5px;
   border: solid 1px white;
