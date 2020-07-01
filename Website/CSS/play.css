@@ -3,12 +3,15 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-image: url(../IMG/babd6ec29409bff42a161e303260ed7a.jpg);  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #header-bar {
   background: rgba(0,0,0,0.8);
   z-index: 998;
-  pointer-events: none;
   height: 6%;
   width: 100%;
   position: relative;
@@ -32,7 +35,7 @@ html, body {
   left: 5px;
   background-image: url(../IMG/earth_trans.png);
   background-size: cover;
-  animation: ellipseOrbit 20s ease-in-out infinite;
+  animation: ellipseOrbit 30s ease-in-out infinite;
 }
 
 #header-timer {
@@ -249,11 +252,9 @@ th {
   margin: 0;
   color: white;
   font-size: 25px;
-  background-image: url(../IMG/babd6ec29409bff42a161e303260ed7a.jpg);
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 100%;
   width: 100%;
   z-index: 999;
 }
