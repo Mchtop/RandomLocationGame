@@ -346,16 +346,16 @@ function initialize() {
 
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
-    toggleElementVisibilityFunctionBlock("header-score");
+    toggleElementVisibilityFunctionFlex("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
   }
 
-  /* method to start new game */
+  /* method to hide results */
   function hideResults(){
     toggleElementVisibilityFunctionFlex("end-page");
     toggleElementVisibilityFunctionFlex("result-popup");
-    //toggleElementVisibilityFunctionBlock("header-score");
+    toggleElementVisibilityFunctionFlex("header-score");
     toggleElementVisibilityFunctionBlock("map-and-button");
     toggleElementVisibilityFunctionFlex("pano");
   }
