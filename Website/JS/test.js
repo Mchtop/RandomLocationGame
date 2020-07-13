@@ -12,13 +12,13 @@ var distances = [];
 var currentRound = 1;
 var currentScore = 0;
 
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
-let displaySeconds = 0;
-let displayMinutes = 0;
-let displayHours = 0;
-let interval = window.setInterval(stopwatch, 1000);
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
+var displaySeconds = 0;
+var displayMinutes = 0;
+var displayHours = 0;
+var interval = window.setInterval(stopwatch, 1000);
 
 function initialize() {
   toggleElementVisibilityFunctionFlex('result-popup');
