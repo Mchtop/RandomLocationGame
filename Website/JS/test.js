@@ -1,5 +1,9 @@
 var map;
-var coordinates;
+var coordinates = {
+  lat: 0,
+  lng: 0
+};
+
 var panorama;
 var markerActualLocation;
 var line;
@@ -22,11 +26,6 @@ var interval = window.setInterval(stopwatch, 1000);
 
 function initialize() {
   toggleElementVisibilityFunctionFlex('result-popup');
-
-  coordinates = {
-    lat: 0,
-    lng: 0
-  };
 
   randomizeLocationFunction();
 
